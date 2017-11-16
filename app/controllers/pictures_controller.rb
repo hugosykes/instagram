@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /pictures
   # GET /pictures.json
   def index
@@ -69,6 +69,7 @@ class PicturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
-      params.require(:picture).permit(:name, :description, :img_url)
+      params['picture']['user_id'] = current_user.id
+      params.require(:picture).permit(:name, :description, :img_url, :user_id)
     end
 end
