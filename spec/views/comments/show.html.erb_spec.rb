@@ -1,14 +1,14 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-RSpec.describe "comments/show", type: :view do
-  before(:each) do
-    @comment = assign(:comment, Comment.create!(
-      :content => "MyText"
-    ))
-  end
+# RSpec.describe "comments/show", type: :view do
+#   before(:each) do
+#     @comment = assign(:comment, Comment.create!(
+#       :content => "MyText"
+#     ))
+#   end
 
-  it "renders attributes in <p>" do
-    render
-    expect(rendered).to match(/MyText/)
-  end
-end
+#   it "renders attributes in <p>" do
+#     render
+#     expect(rendered).to match(/MyText/)
+#   end
+# end
