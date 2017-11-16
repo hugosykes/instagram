@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /comments
   # GET /comments.json
@@ -28,7 +29,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to pictures_url, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -71,6 +72,6 @@ class CommentsController < ApplicationController
     def comment_params
       params['comment']['user_id'] = current_user.id
       params['comment']['picture_id'] = params['picture_id']
-      params.require(:comment).permit(:content, :picture_id, :user_id)
+      params.require(:comment).permit(:comment, :picture_id, :user_id)
     end
 end
