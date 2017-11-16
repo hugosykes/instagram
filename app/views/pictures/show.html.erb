@@ -15,5 +15,6 @@
   <%= @picture.img_url %>
 </p>
 
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<%= link_to 'Edit', edit_picture_path(@picture) %>
+<%= render 'comments/form', comment: @comment %>
 <%= link_to 'Back', pictures_path %>

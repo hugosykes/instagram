@@ -1,4 +1,6 @@
-<%= form_with(model: comment, local: true) do |form| %>
+  <% user_id = current_user ? current_user.id : 0 %>
+  <%= form_with(model: comment, url: { controller: 'comments', action: 'create', picture_id: params[:id], user_id: user_id }, local: true ) do |form| %>
+
   <% if comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -12,8 +14,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content, id: :comment_content %>
+    <%= form.label :comment %>
+    <%= form.text_area :comment, id: :comment_comment %>
   </div>
 
   <div class="actions">
