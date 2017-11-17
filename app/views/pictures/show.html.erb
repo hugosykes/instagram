@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <h3><strong>Name:</strong><h3>
   <%= @picture.name %>
 </p>
 
@@ -14,7 +14,14 @@
   <strong>Img url:</strong>
   <%= @picture.img_url %>
 </p>
-
+  <h3><strong>Comments</strong></h3>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.comment %></td> |
+        <td><%= link_to 'Edit', edit_picture_comment_url(comment) %></td> |
+        <td><%= link_to 'Destroy', picture_comment_url(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %></td><br>
+      </tr>
+    <% end %>
 <%= link_to 'Edit', edit_picture_path(@picture) %>
 <%= render 'comments/form', comment: @comment %>
 <%= link_to 'Back', pictures_path %>
