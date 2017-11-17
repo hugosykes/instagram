@@ -37,7 +37,7 @@ feature 'login' do
       
       scenario 'show picture' do
         click_link 'Show'
-        expect(current_path).to eq('/pictures/1')
+        expect(current_path).to eq('/pictures/2')
       end
 
       scenario 'destroy picture' do

@@ -11,6 +11,7 @@ class PicturesController < ApplicationController
   # GET /pictures/1.json
   def show
     @comment = Comment.new
+    @comments = Comment.where(picture_id: params[:id])    
   end
 
   # GET /pictures/new
