@@ -1,5 +1,4 @@
-  <% picture_id = params[:action] == 'show' ? params[:id] : params[:picture_id] %>
-  <%= form_with(model: comment, url: { controller: 'comments',  action: @action , picture_id: picture_id}, local: true ) do |form| %>
+  <%= form_with(model: comment, url: picture_comment_path(params[:picture_id], comment.id), method: :patch, local: true ) do |form| %>
 
   <% if comment.errors.any? %>
     <div id="error_explanation">
