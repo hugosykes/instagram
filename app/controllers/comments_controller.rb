@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @comments = Comment.where(picture_id: :id)
   end
 
   # GET /comments/1
@@ -66,6 +66,7 @@ class CommentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
+      p params
       @comment = Comment.find(params[:id])
     end
 

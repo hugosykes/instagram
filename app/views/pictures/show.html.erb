@@ -18,7 +18,7 @@
     <% @comments.each do |comment| %>
       <tr>
         <td><%= comment.comment %></td> |
-        <td><%= link_to 'Edit', edit_picture_comment_url(comment) %></td> |
+        <td><%= link_to 'Edit', edit_picture_comment_url(@picture.id, comment.id) %></td> |
         <td><%= link_to 'Destroy', picture_comment_url(comment.id), method: :delete, data: { confirm: 'Are you sure?' } %></td><br>
       </tr>
     <% end %>

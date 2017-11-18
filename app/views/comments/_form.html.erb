@@ -1,10 +1,11 @@
   <% user_id = current_user ? current_user.id : 0 %>
-  <%= form_with(model: comment, url: { controller: 'comments', action: 'create', picture_id: params[:id], user_id: user_id }, local: true ) do |form| %>
+  <% picture_id = params[:action] == 'show' ? params[:id] : params[:picture_id] %>
+  <% method = params[:action] == 'edit' ? 'patch' : nil %>
+  <%= form_with(model: comment, url: { controller: 'comments',  action: @action , picture_id: picture_id}, local: true ) do |form| %>
 
   <% if comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
       <ul>
       <% comment.errors.full_messages.each do |message| %>
         <li><%= message %></li>
