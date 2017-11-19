@@ -17,7 +17,7 @@
       <tr>
         <td><%= picture.name %></td><br>
         <td><%= picture.description %></td><br>
-        <td><%= picture.image %></td><br>
+        <td><%= image_tag picture.image.thumb.url %></td><br>
         <td><%= link_to 'Show', picture %></td>
         <% if current_user && current_user.id == picture.user_id%>
           <td><%= link_to 'Edit', edit_picture_path(picture) %></td>

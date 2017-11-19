@@ -11,6 +11,6 @@ def add_picture
   visit('/pictures/new')
   fill_in :picture_name, with: 'KFC'
   fill_in :picture_description, with: 'Finger-licking good'
-  fill_in :picture_img_url, with: 'image url'
+  attach_file('Image', '/Users/hugosykes/Pictures/mesut.jpg')
   click_button 'Create Picture'
 end
