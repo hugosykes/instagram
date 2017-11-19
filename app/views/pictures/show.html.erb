@@ -17,9 +17,11 @@
   <h3><strong>Comments</strong></h3>
     <% @comments.each do |comment| %>
       <tr>
-        <td><%= comment.comment %></td> |
-        <td><%= link_to 'Edit', edit_picture_comment_url(@picture.id, comment.id) %></td> |
-        <td><%= link_to 'Destroy', picture_comment_url(@picture.id, comment.id), method: :delete, data: { confirm: 'Are you sure?' } %></td><br>
+        <td><%= comment.comment %>, <%= User.find(comment.user_id).email %></td> |
+        <% if (comment.user_id == current_user.id) %>
+          <td><%= link_to 'Edit', edit_picture_comment_url(@picture.id, comment.id) %></td> |
+          <td><%= link_to 'Destroy', picture_comment_url(@picture.id, comment.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %><br>
       </tr>
     <% end %>
 <%= link_to 'Edit', edit_picture_path(@picture) %>
