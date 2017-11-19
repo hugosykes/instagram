@@ -7,7 +7,7 @@
     <tr>
       <th>Name</th>
       <th>Description</th>
-      <th>Img url</th>
+      <th>Image</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,7 +17,7 @@
       <tr>
         <td><%= picture.name %></td><br>
         <td><%= picture.description %></td><br>
-        <td><%= picture.img_url %></td><br>
+        <td><%= picture.image %></td><br>
         <td><%= link_to 'Show', picture %></td>
         <% if current_user && current_user.id == picture.user_id%>
           <td><%= link_to 'Edit', edit_picture_path(picture) %></td>

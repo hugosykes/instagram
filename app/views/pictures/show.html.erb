@@ -11,8 +11,8 @@
 </p>
 
 <p>
-  <strong>Img url:</strong>
-  <%= @picture.img_url %>
+  <strong>Image:</strong>
+  <%= image_tag @picture.image.url %>
 </p>
   <h3><strong>Comments</strong></h3>
     <% @comments.each do |comment| %>
