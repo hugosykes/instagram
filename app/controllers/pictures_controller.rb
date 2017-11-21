@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
-  before_action :set_picture, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_picture, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: %i[index show]
   # GET /pictures
   # GET /pictures.json
   def index
@@ -11,7 +11,7 @@ class PicturesController < ApplicationController
   # GET /pictures/1.json
   def show
     @comment = Comment.new
-    @comments = Comment.where(picture_id: params[:id])    
+    @comments = Comment.where(picture_id: params[:id])
   end
 
   # GET /pictures/new
@@ -21,6 +21,7 @@ class PicturesController < ApplicationController
 
   # GET /pictures/1/edit
   def edit
+    redirect_to pictures_path if @picture.id != current_user.id
   end
 
   # POST /pictures
@@ -63,14 +64,15 @@ class PicturesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_picture
-      @picture = Picture.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def picture_params
-      params['picture']['user_id'] = current_user.id
-      params.require(:picture).permit(:name, :description, :image, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_picture
+    @picture = Picture.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def picture_params
+    params['picture']['user_id'] = current_user.id
+    params.require(:picture).permit(:name, :description, :image, :user_id)
+  end
 end
